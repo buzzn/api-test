@@ -26,6 +26,9 @@ describe('Test the log in', () => {
       groupId = response.body['array'][0].id;
       groupUpdated = response.body['array'][0].updated_at;
       showEnergy = response.body['array'][0].show_energy;
+      console.log('-----');
+      console.log(response.body['array'][0]);
+      console.log('-----');
     });
 
     test('It should update group', async () => {
@@ -33,6 +36,9 @@ describe('Test the log in', () => {
       const response = await request.patch(`/api/admin/localpools/${groupId}`)
         .set({ Authorization: token })
         .send({ show_energy: showEnergy, updated_at: groupUpdated });
+      console.log('+++++');
+      console.log(response.body);
+      console.log('+++++');
       expect(response.status).toBe(200);
     });
   });
