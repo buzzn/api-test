@@ -23,11 +23,12 @@ describe('Test the log in', () => {
       expect(response.status).toBe(200);
       expect(response.body['array']).toBeInstanceOf(Array);
       expect(response.body['array'].length).toBeGreaterThan(0);
-      groupId = response.body['array'][0].id;
-      groupUpdated = response.body['array'][0].updated_at;
-      showEnergy = response.body['array'][0].show_energy;
+      const group = response.body['array'].find(g => g.name === 'People Power Group (Testgruppe)');
+      groupId = group.id;
+      groupUpdated = group.updated_at;
+      showEnergy = group.show_energy;
       console.log('-----');
-      console.log(response.body['array'][0]);
+      console.log(group);
       console.log('-----');
     });
 
